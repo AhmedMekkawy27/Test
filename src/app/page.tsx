@@ -60,16 +60,16 @@ export default function Home() {
               <h2 className="text-lg font-medium">{weather.current.condition.text}</h2>
             </div>
             <div className="flex justify-center items-center p-3 border-[1px] rounded-lg border-gray-600">
-              <p className="text-4xl font-bold">{weather.current.temp_c} °C</p>
+              <p className="text-4xl font-bold">{weather.current.temp_c.toFixed()} °C</p>
             </div>
             <div className="flex justify-center items-center p-3 border-[1px] rounded-lg border-gray-600">
               <p className="text-md">Humidity: {weather.current.humidity}%</p>
             </div>
             <div className="flex justify-center items-center p-3 border-[1px] rounded-lg border-gray-600">
-              <p className="text-md">Wind: {weather.current.wind_kph}kph</p>
+              <p className="text-md">Wind: {weather.current.wind_kph.toFixed()}kph</p>
             </div>
             <h2 className="col-span-2 font-semibold text-xl">5-day Forecast</h2>
-            <div className="col-span-2 flex flex-col p-3 border-[1px] min-w-fit rounded-lg gap-y-4 border-gray-600 text-white">
+            <div className="col-span-2 flex flex-col items-center p-3 border-[1px] min-w-fit rounded-lg gap-y-4 border-gray-600 text-white">
               {weather.forecast.forecastday.map((day:any) => (
                 <Forecast key={day.date} date={weekdays(day.date)} maxtemp={day.day.maxtemp_c.toFixed()} mintemp={day.day.mintemp_c.toFixed()} condition={conditionTrim(day.day.condition.text)} icon={day.day.condition.icon}/>
               ))}
