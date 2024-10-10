@@ -4,3 +4,7 @@ export const weekdays = (date:string)=>{
     const dayIndex = theDate.getDay()
     return weekdays[dayIndex]
 }
+
+export const conditionTrim = (condition:string) =>{
+    return condition.toLowerCase() === 'patchy rain nearby'? condition.slice(0,11): condition
+}

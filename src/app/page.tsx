@@ -1,7 +1,7 @@
 "use client"
 import Forecast from "@/components/ui/Forecast";
-import { weekdays } from "@/utils/functions";
-import { useEffect, useState } from "react";
+import { conditionTrim, weekdays } from "@/utils/functions";
+import {MouseEvent, useEffect, useState } from "react";
 
 export default function Home() {
   const [city, setCity] = useState("cairo");
@@ -17,13 +17,15 @@ export default function Home() {
     }
   }
   useEffect(() => {
-    fetchWeatherData();
+    fetchWeatherData()
+
   },[]);
   console.log(weather)
   return (
 <div className="min-h-screen bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 flex justify-center items-center">
       <div className="bg-gray-800 rounded-lg shadow-lg p-8 max-w-fit ">
         <h1 className="text-3xl text-white text-center mb-6">Weather App</h1>
+        <form>
         <label htmlFor="city" className="text-white block text-start mb-2">Type City Name:</label>
         <input
           id="city"
@@ -35,11 +37,12 @@ export default function Home() {
         />
 
         <button
-          onClick={fetchWeatherData}
+          onClick={e =>{e.preventDefault(); fetchWeatherData();}}
           className="bg-purple-600 text-white px-4 py-2 mt-4 rounded w-full hover:bg-purple-500 transition"
         >
           Get Weather
         </button>
+        </form>
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
 
@@ -68,7 +71,7 @@ export default function Home() {
             <h2 className="col-span-2 font-semibold text-xl">5-day Forecast</h2>
             <div className="col-span-2 flex flex-col p-3 border-[1px] min-w-fit rounded-lg gap-y-4 border-gray-600 text-white">
               {weather.forecast.forecastday.map((day:any) => (
-                <Forecast key={day.date} date={weekdays(day.date)} maxtemp={day.day.maxtemp_c.toFixed()} mintemp={day.day.mintemp_c.toFixed()} condition={day.day.condition.text} icon={day.day.condition.icon}/>
+                <Forecast key={day.date} date={weekdays(day.date)} maxtemp={day.day.maxtemp_c.toFixed()} mintemp={day.day.mintemp_c.toFixed()} condition={conditionTrim(day.day.condition.text)} icon={day.day.condition.icon}/>
               ))}
             </div>
           </div>
