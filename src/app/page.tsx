@@ -10,8 +10,7 @@ export default function Home() {
 
   async function fetchWeatherData() {
     try{
-      const weatherData = await fetch(`http://api.weatherapi.com/v1/forecast.json?days=5&key=72048723f49c411e8e795302240810&q=${city}`).then(response => response.json())
-      // const forecastData = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=72048723f49c411e8e795302240810&q=${city}`).then(response => response.json())
+      const weatherData = await fetch(`https://api.weatherapi.com/v1/forecast.json?days=5&key=72048723f49c411e8e795302240810&q=${city}`).then(response => response.json())
       setWeather(weatherData)
     } catch (error) {
       setError("Failed to fetch weather data");
