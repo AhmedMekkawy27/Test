@@ -8,11 +8,11 @@ interface IProps{
 
 const Forecast = ({date, maxtemp, mintemp, condition, icon}:IProps) => {
   return (
-    <div className="flex items-center gap-4">
-      <div className="min-w-fit w-9 flex justify-center items-center">
+    <div className="flex items-center gap-6">
+      <div className="min-w-fit w-9 flex items-center">
         <h3 className="text-center font-semibold">{date}</h3>
       </div>
-      <div className="min-w-fit w-28 flex justify-center items-center">
+      <div className="min-w-fit w-28 flex items-center justify-center">
         <p className="text-center font-medium gap-5 flex items-center"><span>{maxtemp}°C</span> <span>{mintemp}°C</span></p>
       </div>
       <div className="flex items-center gap-1 justify-end">
